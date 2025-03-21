@@ -12,7 +12,7 @@ dependencies = [
     "djangorestframework>=3.15.2",
 ]
 
-[dependency-groups]
-dev = [
+[tool.uv]
+dev-dependencies = [
     "flake8>=7.1.2",
 ]
