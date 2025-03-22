@@ -8,8 +8,11 @@ description = "A compact wallet API"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "dj-database-url>=2.3.0",
     "django>=5.1.7",
     "djangorestframework>=3.15.2",
+    "psycopg2-binary>=2.9.10",
+    "python-dotenv>=1.0.1",
 ]
 
 [tool.uv]
