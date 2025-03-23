@@ -1,0 +1,36 @@
+from django.db import transaction
+from rest_framework import status
+from rest_framework.response import Response
+from .models import Wallets
+from .serializers import OperationSerializer
+
+
+class WalletsRepository:
+    def conduct_operation(self, wallet_uuid, data):
+        serializer = OperationSerializer(data=data)
+        if serializer.is_valid():
+            operation_type = serializer.validated_data['operation_type']
+            amount = serializer.validated_data['amount']
+
+            with transaction.atomic():
+                wallet = Wallets.objects.select_for_update().get(uuid=wallet_uuid)
+
+                if operation_type == 'DEPOSIT':
+                    wallet.balance += amount
+                elif operation_type == 'WITHDRAW':
+                    if wallet.balance < amount:
+                        return Response(
+                            {"detail": "Insufficient funds."},
+                            status=status.HTTP_400_BAD_REQUEST,
+                        )
+                    wallet.balance -= amount
+                wallet.save()
+
+            return Response(
+                {"detail": "Operation successful."},
+                status=status.HTTP_200_OK,
+            )
+        return Response(
+            {"detail": "Invalid operation or amount."},
+            status=status.HTTP_400_BAD_REQUEST,
+        )
