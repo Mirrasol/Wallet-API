@@ -1,4 +1,5 @@
 from django.db import transaction
+from django.core.exceptions import ValidationError
 from rest_framework import status
 from rest_framework.response import Response
 from .models import Wallets
@@ -13,7 +14,13 @@ class WalletsRepository:
             amount = serializer.validated_data['amount']
 
             with transaction.atomic():
-                wallet = Wallets.objects.select_for_update().get(uuid=wallet_uuid)
+                try:
+                    wallet = Wallets.objects.select_for_update().get(uuid=wallet_uuid)
+                except ValidationError:
+                    return Response(
+                        {"detail": "Wallet not found."},
+                        status=status.HTTP_404_NOT_FOUND,
+                    )
 
                 if operation_type == 'DEPOSIT':
                     wallet.balance += amount
