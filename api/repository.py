@@ -22,7 +22,7 @@ class WalletsRepository:
                     wallet = Wallets.objects.select_for_update().get(uuid=wallet_uuid)
                 except ValidationError:
                     return Response(
-                        {"detail": "Wallet not found."},
+                        {"detail": "Not found."},
                         status=status.HTTP_404_NOT_FOUND,
                     )
 
