@@ -7,6 +7,10 @@ from .serializers import OperationSerializer
 
 
 class WalletsRepository:
+    """
+    A repository that handles allowed wallet operations
+    within the database.
+    """
     def conduct_operation(self, wallet_uuid, data):
         serializer = OperationSerializer(data=data)
         if serializer.is_valid():

@@ -6,6 +6,10 @@ from .serializers import WalletsSerializer
 
 
 class WalletsViewSet(viewsets.ModelViewSet):
+    """
+    View for checking a specific wallet balance and
+    withdrawing/depositing funds.
+    """
     queryset = Wallets.objects.all()
     serializer_class = WalletsSerializer
     repository = WalletsRepository()

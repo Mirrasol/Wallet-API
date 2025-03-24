@@ -2,6 +2,9 @@ from django.db import models
 
 
 class Wallets(models.Model):
+    """
+    A custom Wallet model.
+    """
     uuid = models.UUIDField(primary_key=True, editable=False, unique=True)
     balance = models.DecimalField(max_digits=15, decimal_places=3, default=0.000)
 
