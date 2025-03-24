@@ -10,6 +10,9 @@ migrations:
 migrate:
 	uv run python manage.py migrate
 
+test:
+	uv run python manage.py test tests
+
 build:
 	uv build
 
