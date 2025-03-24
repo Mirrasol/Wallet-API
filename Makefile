@@ -17,4 +17,4 @@ build:
 	uv build
 
 lint:
-	uv run flake8 api
+	uv run flake8 api tests
