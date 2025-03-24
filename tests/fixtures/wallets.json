@@ -1,0 +1,23 @@
+[
+    {
+      "model": "api.Wallets",
+      "fields": {
+        "uuid": "74417945-fe0d-45e3-9cdb-025dc65711aa",
+        "balance": "0.000"
+      }
+    },
+    {
+      "model": "api.Wallets",
+      "fields": {
+        "uuid": "ff8ea749-761a-4dcf-b880-1b7338f2711c",
+        "balance": "10.765"
+      }
+    },
+      {
+      "model": "api.Wallets",
+      "fields": {
+        "uuid": "661d3d13-9a52-4151-9d4f-8f4e9d1dc491",
+        "balance": "116.364"
+      }
+    }
+  ]
