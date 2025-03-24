@@ -1,4 +1,3 @@
-from django.urls import reverse_lazy
 from rest_framework import status
 from rest_framework.test import APITestCase, APIClient
 from api.models import Wallets
@@ -22,7 +21,7 @@ class WalletsTestCase(APITestCase):
         response = self.client.get(url, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['balance'], '0.000')
-    
+
     def test_deposit_funds(self):
         """
         Ensure we can deposit a valid sum into a wallet.
@@ -36,7 +35,6 @@ class WalletsTestCase(APITestCase):
             Wallets.objects.get(uuid='ff8ea749-761a-4dcf-b880-1b7338f2711c').balance,
             Decimal('15.765'),
         )
-
 
     def test_withdraw_funds(self):
         """
@@ -61,7 +59,7 @@ class WalletsTestCase(APITestCase):
         response = self.client.post(url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertEqual(response.data['detail'], 'Insufficient funds.')
-    
+
     def test_user_invalid_funds_amount(self):
         """
         Check that we can cannot withdraw or deposit an invalid sum.'
