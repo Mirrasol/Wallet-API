@@ -20,10 +20,8 @@ A compact webservice to browse wallets and withdraw/deposit funds into them.
 
 `docker compose up --build`
 
-3) Or install using uv package manager from your console:
+3) Or install using pip:
 
-`make install`
-
-and check Makefile for the list of all available commands for the uv environment.
+`pip install -r requirements.txt`
 
 4) Afterwards, apply initial migration.
