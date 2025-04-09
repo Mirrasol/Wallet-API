@@ -1,4 +1,4 @@
-# Wallet API.
+# Wallet API: testing assignment.
 
 A compact webservice to browse wallets and withdraw/deposit funds into them.
 
